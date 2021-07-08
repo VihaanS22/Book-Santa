@@ -20,12 +20,12 @@ export default class WelcomeScreen extends Component {
   }
 
   userLogin = (emailId, password)=>{
-    alert("login")
+   
     firebase.auth().signInWithEmailAndPassword(emailId, password)
     .then(()=>{
-      alert("st nav")
+     
       this.props.navigation.navigate('DonateBooks')
-      alert("end nav")
+      
 
     })
     .catch((error)=> {
@@ -42,7 +42,7 @@ export default class WelcomeScreen extends Component {
       else{ firebase.auth().createUserWithEmailAndPassword(emailId, password) 
         .then(()=>{ 
           db.collection('users')
-          .add({ first_name:this.state.firstName, last_name:this.state.lastName, mobile_number :this.state.contact, email:this.state.emailId, address:this.state.address }) 
+          .add({ first_name:this.state.firstName, last_name:this.state.lastName, contact :this.state.contact, email_id:this.state.emailId, address:this.state.address, isBookRequestActive : false }) 
           return Alert.alert( 'User Added Successfully', '', 
           [ {text: 'OK', onPress: () => 
           this.setState({"isModalVisible" : false})}, ] ); }) 
@@ -54,7 +54,7 @@ export default class WelcomeScreen extends Component {
 
   showModal = ()=>{ 
     return( 
-    <Modal animationType="fade" transparent={true} visible={this.state.isModalVisible} > 
+    <Modal animationType="fade" transparent={true} visible={this.state.isModalVisible}> 
     <View style={styles.modalContainer}> 
     <ScrollView style={{width:'100%'}}> 
     <KeyboardAvoidingView style={styles.KeyboardAvoidingView}> 
@@ -158,6 +158,7 @@ onPress={()=>this.setState({"isModalVisible":false})} >
             >
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
+          
           <TouchableOpacity
             style={styles.button}
             onPress={()=> 
