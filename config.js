@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 require('@firebase/firestore')
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyA__K6ERrNyZ26tkBnk1qCV65CrruRe4l4",
   authDomain: "book-santa-95bcb.firebaseapp.com",
   projectId: "book-santa-95bcb",
@@ -12,3 +12,4 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   export default firebase.firestore()
+  
